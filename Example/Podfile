@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '11.0'
 
 target 'HttpLogPreview_Example' do
-  pod 'HttpLogPreview', :path => '../'
+  pod 'HttpLogPreview', :path => '../', :configurations => ['Debug']
 
   target 'HttpLogPreview_Tests' do
     inherit! :search_paths
