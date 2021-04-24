@@ -28,13 +28,13 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Cellphoness/HttpLogPreview.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
 
   s.source_files = 'HttpLogPreview/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'HttpLogPreview' => ['HttpLogPreview/Assets/*.png']
-  # }
+  s.dependency 'GCDWebServer', '3.5.4'
+   s.resource_bundles = {
+     'HttpLogPreview' => ['HttpLogPreview/Assets/*.png']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
