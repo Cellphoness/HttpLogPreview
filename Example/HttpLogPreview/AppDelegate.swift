@@ -8,6 +8,10 @@
 
 import UIKit
 
+#if DEBUG
+import HttpLogPreview
+#endif
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
+
+        #if DEBUG
+        HttpServerLogger.shared().startServer(8989)
+        #endif
+        
         return true
     }
 
