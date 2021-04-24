@@ -7,7 +7,10 @@
 //
 
 import UIKit
+
+#if DEBUG
 import HttpLogPreview
+#endif
 
 class ViewController: UIViewController {
 
@@ -17,7 +20,7 @@ class ViewController: UIViewController {
 
         view.backgroundColor = .white
 
-        HttpServerLogger.shared().startServer(8989)
+        #if DEBUG
 
         NotificationCenter.default.post(name: HttpLogDefine.Notification.httpLog, object: "post notification 12345")
         NotificationCenter.default.post(name: HttpLogDefine.Notification.httpLog, object: "post notification 67890")
@@ -33,6 +36,8 @@ class ViewController: UIViewController {
         LogPreviewManager.loggerBrowserMultibleLines("total 5 line 3", lines: 5)
         LogPreviewManager.loggerBrowserMultibleLines("total 5 line 4", lines: 5)
         LogPreviewManager.loggerBrowserMultibleLines("total 5 line 5", lines: 5)
+
+        #endif
     }
 
 

@@ -9,7 +9,43 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Usage
+
+To Copy following files to your project to customize
+* Define.swift
+* LogPreviewManager.swift
+* Lock.kit
+
+use
+``` swift
+HttpServerLogger.shared().startServer()
+``` 
+to start your server by default 8080 port
+``` swift
+#if DEBUG
+import HttpLogPreview
+#endif
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        #if DEBUG
+        HttpServerLogger.shared().startServer(8989)
+        #endif
+        
+        return true
+    }
+}
+```
+
+## More Usage
+
+more usage for LogPreviewManager.swift
+can be seen in Example Project ViewController.swift
 
 ## Installation
 
