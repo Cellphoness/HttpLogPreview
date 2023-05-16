@@ -49,7 +49,7 @@
     return _webServer;
 }
 - (void)startServer:(NSUInteger)port {
-#if DEBUG
+//#if DEBUG
     // Use convenience method that runs server on port 8080
     // until SIGINT (Ctrl-C in Terminal) or SIGTERM is received
     NSLog(@"Visit http://localhost:%ld in your web browser", port == nil ? 8080 : port);
@@ -61,9 +61,9 @@
         [self.webServer startWithPort:port bonjourName:nil];
     }
     self.isLogging = YES;
-#else
-
-#endif
+//#else
+//
+//#endif
 }
 
 - (void)stopServer {
@@ -120,6 +120,15 @@
          margin-top: 20px;\n\
          text-align: center;\n\
          }\n\
+          .filter {\n\
+             text-align: left;\n\
+             margin: 0px 10px;\n\
+             width: 120px;\n\
+          }\n\
+          #content {\n\
+             display: flex;\n\
+             flex-direction: column;\n\
+          }\n\
          </style>"];
         [string appendFormat:@"<script type=\"text/javascript\">\n\
          var t = null;\n\
@@ -129,6 +138,31 @@
          function updateTimestamp() {\n\
          var now = new Date();\n\
          footerElement.innerHTML = \"Last updated on \" + now.toLocaleDateString() + \" \" + now.toLocaleTimeString();\n\
+         }\n\
+         function filterFunction() {\n\
+             var x = document.getElementById(\"fname\");\n\
+             var getValue = x.value;\n\
+             var table = document.getElementById(\"content\");\n\
+               for (let index = 0; index < table.childElementCount; index++) {\n\
+                    const ele = table.children.item(index);\n\
+                    const txt = ele.textContent;\n\
+                    if (txt.indexOf(getValue) != -1) {\n\
+                        ele.style.display = \"block\";\n\
+                    } else {\n\
+                        ele.style.display = \"none\";\n\
+                    }\n\
+                }\n\
+         }\n\
+         function reverseHandle() {\n\
+              var reverseBtn = document.getElementById('reverseBtn');\n\
+              var table = document.getElementById('content');\n\
+              if (table.style['flex-direction'] == 'column-reverse') {\n\
+                  reverseBtn.innerHTML = 'Reverse';\n\
+                  table.style['flex-direction'] = 'column';\n\
+              } else {\n\
+                  reverseBtn.innerHTML = 'Order';\n\
+                  table.style['flex-direction'] = 'column-reverse';\n\
+              }\n\
          }\n\
          function refresh() {\n\
          var timeElement = document.getElementById(\"maxTime\");\n\
@@ -179,6 +213,8 @@
         [string appendString:@"<div class=\"bottom\">"];
         [string appendString:@"<button class=\"btn\" onClick=\"clearHandle()\">Clear Console</button>"];
         [string appendString:@"<button id=\"stopBtn\" onClick=\"stopHandle()\">Stop Timer</button>"];
+        [string appendString:@"<input id=\"fname\" class=\"filter\" placeholder=\"Filter For Less\"  onchange=\"filterFunction()\"></input>"];
+        [string appendString:@"<button id=\"reverseBtn\" onclick=\"reverseHandle()\" class=\"btn\">Reverse</button>"];
         [string appendString:@"<div id=\"footer\"></div>"];
         [string appendString:@"</div>"];
         [string appendString:@"<table><tbody id=\"content\">"];
