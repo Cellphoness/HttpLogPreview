@@ -14,23 +14,18 @@ public class LogPreviewManager {
         return shared
     }
 
-    //属性锁的Swift封装
-//    @synchronized (<#token#>) {
-//    <#statements#>
-//    }
-
     static private let queue = DispatchQueue(label: "com.custom.globalLogger.lock.property", qos: .default, attributes: .concurrent, autoreleaseFrequency: .workItem)
     static private var _myTempArray = [Any]()
     static var tempArray: [Any] {
         get {
             var result = [Any]()
-            LockKit.with(queue: queue) {
+            LockQueue.with(queue: queue) {
                 result = _myTempArray
             }
             return result
         }
         set {
-            LockKit.with(queue: queue) {
+            LockQueue.with(queue: queue) {
                 _myTempArray = newValue
             }
         }

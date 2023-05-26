@@ -2,7 +2,7 @@ PODS:
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
   - GCDWebServer/Core (3.5.4)
-  - HttpLogPreview (1.0.0):
+  - HttpLogPreview (1.0.2):
     - GCDWebServer (= 3.5.4)
 
 DEPENDENCIES:
@@ -18,8 +18,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
-  HttpLogPreview: 879716b84b0ddc5c702f5d385a1210acb37f65c9
+  HttpLogPreview: 06e09a6308d6c9a5f95ecc6c795dd7dad8f40b74
 
 PODFILE CHECKSUM: 7bed155801c6db082f90a535b299da0c5a1f9c85
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
