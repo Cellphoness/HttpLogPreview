@@ -15,9 +15,16 @@ import HttpLogPreview
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    let httpLogServerHostPort = 8077
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+#if DEBUG
+        //SHow Log - http://your-phone-ip:8077
+        HttpServerLogger.shared().startServer(UInt(httpLogServerHostPort))
+#endif
+
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         // window 背景色为白色
